@@ -2,7 +2,6 @@
 name: Ahmet Turkmen
 bio: J. Go/Python Developer 
 
-
 # twitter summary info
 description: Like to work on Open Source Projects, Curious 
 
@@ -129,7 +128,7 @@ plugins:
   - jekyll-paginate-v2
 
 jekyll-mentions:
-  base_url: https://mrturkmen06.github.io
+  base_url: https://github.com
 
 compress_html:
   ignore:
