@@ -1,9 +1,9 @@
 ---
-title: "Linux Terminal-Basit 🇹🇷"
+title: "cp/reboot [BASH] 🇹🇷"
 layout: post
 date: 2019-01-09 09:04
-image: /assets/images/markdown.jpg
-headerImage: false
+image: /assets/images/bash_preview.png
+headerImage: true
 tag:
 - linux
 - terminal
