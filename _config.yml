@@ -129,7 +129,7 @@ plugins:
   - jekyll-paginate-v2
 
 jekyll-mentions:
-  base_url: https://mrturkmen.com
+  base_url: https://mrturkmen06.github.io
 
 compress_html:
   ignore:
