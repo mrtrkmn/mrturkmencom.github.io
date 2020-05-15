@@ -292,16 +292,16 @@ Kullanıcı ve grupa, yazma ve çalıştırma izni vermek:
 ## Metin Düzenleyicileri
 
 #### VI ve VIM
-    Terminal tabanlı güçlü metin düzenleyicidir. Vi genelde linux tabanlı bütün sistemlerde mevcuttur, vim, vi nin gelişmişidir. 
+Terminal tabanlı güçlü metin düzenleyicidir. Vi genelde linux tabanlı bütün sistemlerde mevcuttur, vim, vi nin gelişmişidir. 
 
 #### EMACS
-    Grafik tabanlı metin düzenleyicidir. Bu düzenleyiciye ait olan klavye düzeni hakkında bilginiz olmalıdır. Bütün linux ve unix tabanlı sistemlerde mevcuttur. 
+Grafik tabanlı metin düzenleyicidir. Bu düzenleyiciye ait olan klavye düzeni hakkında bilginiz olmalıdır. Bütün linux ve unix tabanlı sistemlerde mevcuttur. 
 
 #### XEMACS
-    EMACS in çok daha gelişmişidir, yazım hataları, web ve metini iyi bir şekilde kontrol etmek mümkündür fakat normalde yüklenmiş olmaz. 
+EMACS in çok daha gelişmişidir, yazım hataları, web ve metini iyi bir şekilde kontrol etmek mümkündür fakat normalde yüklenmiş olmaz. 
 
 #### PICO
-    Terminal tabanlı basit metin düzenleyicidir, buna ait klavye düzeni bilinmelidir. 
+Terminal tabanlı basit metin düzenleyicidir, buna ait klavye düzeni bilinmelidir. 
 
 ## VIM Temelleri
 
