@@ -1,5 +1,5 @@
 ---
-title: "cp/reboot [BASH] 🇹🇷"
+title: "cp/reboot 🇹🇷"
 layout: post
 date: 2019-01-09 09:04
 image: /assets/images/bash_preview.png
