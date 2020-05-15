@@ -2,7 +2,7 @@
 title: "Linux Temeller - 1 🇹🇷"
 lay out: post
 date: 2019-01-10 09:04
-image: /assets/images/markdown.jpg
+image: /assets/images/bash_preview.jpg
 headerImage: false
 tag:
 - linux
