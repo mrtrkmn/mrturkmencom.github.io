@@ -1,6 +1,6 @@
 # main text of home
 name: Ahmet Turkmen
-bio: J. Go/Python Developer 
+bio: Software Engineer
 
 # twitter summary info
 description: Like to work on Open Source Projects, Curious 
@@ -74,7 +74,7 @@ email: f.ahmet.turkmen@icloud.com
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
 # normal = 560px / large = 810px
-width: normal
+width: large
 
 # if you do/don't need pagination, toggle 'enabled' between true/false below
 pagination:
