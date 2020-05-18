@@ -66,7 +66,7 @@ Most of the cases, the following information could be valid for all Debian based
 
 Docker can be used for most of the cases although now Kubernetes or any other orchestration systems preffered to used. That kind of orchestration systems may not cause this problem, hence they mostly provide auto scaling and runs on cloud. However, when you have a server with all responsibility, you may face this exact problem.
 
-The problem is installation of docker into any system with default settings may create head ache in the future. If you are planning to use docker, intensively, the main reason of that docker is generally using 
+The problem is installation of docker into any system with default settings may create head ache in the future. If you are planning to use docker, intensively, the main reason of that, docker is generally using 
 
 * `/var/lib/docker` 
 
@@ -204,12 +204,16 @@ $ systemctl start docker
 
 If there was no error during implementation of steps, you can now test your setup. 
 
+*Note that thee should NOT be space between curly brackets when listing mount point only.*
+
 {% highlight bash %}
 $ docker volume create 
 2f2bd462b89c39bb641e7daf01048c5d811dd7796d7f89d250ea82c4532d2707
-$ docker volume inspect --format {{.Mountpoint}} 2f2bd462b89c39bb641e7daf01048c5d811dd7796d7f89d250ea82c4532d2707
+$ docker volume inspect --format { {.Mountpoint} } 2f2bd462b89c39b641e7daf01048c5d811dd7796d7f89d250ea82c4532d2707 
 /data/mnt/docker/volumes/2f2bd462b89c39bb641e7daf01048c5d811dd7796d7f89d250ea82c4532d2707/_data
 {% endhighlight  %}
+
+
 
 As you can observe above docker is using `/data/mnt/docker` for docker volumes, now we can safely remove old backup data. `rm -rf /var/lib/dockerbckp`
 
