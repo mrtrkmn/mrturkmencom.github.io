@@ -57,13 +57,13 @@ spotify: 9u1ozh4a11i46j7qh4ui8elsz
 # lanyrd: mylanyrd
 email: f.ahmet.turkmen@icloud.com
 
-# authors:
-#   johndoe:
-#     name: John Doe
-#     bio: A Man who travels the world eating noodles
-#     external-image: false
-#     picture: assets/images/profile.jpg
-#     twitter: johndoe
+authors:
+  mrturkmen:
+    name: Ahmet Turkmen 
+    bio: Linux/Open Source/Software 
+    external-image: false
+    picture: assets/images/profile.jpg
+    instagram: mr.turkmen
 #   jamesfoster:
 #     name: James Foster
 #     bio: A Man who develops software with coffee
