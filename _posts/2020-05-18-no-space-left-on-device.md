@@ -231,12 +231,12 @@ $ vim /etc/docker/daemon.js
 
 I hope, this post can help others to find required information quickly and implement necessary steps to get to work. 
  
-For past and upcoming posts, check them out at https://mrturkmen.com
+
 
 
 # References:
 
--  https://github.com/moby/moby/issues/10613
--  https://docs.docker.com/config/daemon/systemd/
--  https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine
-- https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169
+-  <a href="https://github.com/moby/moby/issues/10613">https://github.com/moby/moby/issues/10613</a>
+-  <a href="https://docs.docker.com/config/daemon/systemd/">https://github.com/moby/moby/issues/10613</a>
+-  <a href="https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine">https://success.docker.com/article/error-message-no-space-left-on-device-in-default-machine</a>
+- <a href="https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169">https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169</a>
