@@ -161,42 +161,42 @@ If it the error is not caused due to docker volumes, it could be caused from run
 # Permanent Solution 
 
 Permanent solution is using one of storage volume for storing docker volumes, instead of using root path. These are the steps that you may take; 
-
-1. Stop docker service ! 
+ 
+__Stop docker service !__
    
 {% highlight bash %}
  $ systemctl stop docker
 {% endhighlight  %}
 
-2. Rsync all data under `/var/lib/docker` to other directory under storage volume
+__Rsync all data under `/var/lib/docker` to other directory under storage volume__
  
 {% highlight bash %}
  $ mkdir -p /data/mnt  # creates plave to use for docker volumes
  $ rsync -a /var/lib/docker /data/mnt/  # will sync everything 
 {% endhighlight  %}
 
-3. Rename default docker volumes path, this for taking a backup until we have success at the end. 
+__Rename default docker volumes path, this for taking a backup until we have success at the end.__
  
 {% highlight bash %}
  $ mv /var/lib/docker /var/lib/dockerbckp
 {% endhighlight  %}
 
-4. Create symbolic link to actual place
+__Create symbolic link to actual place__
 
 {% highlight bash %}
  $ ln -s /data/mnt/docker /var/lib/docker 
 {% endhighlight  %}
 
-5. Enable `DOCKER_OPTS` 
+__Enable `DOCKER_OPTS`__
 
 {% highlight bash %}
 $ vim /etc/default/docker
  DOCKER_OPTS="--dns 8.8.8.8 --dns 8.8.4.4 -g /data/mnt/docker"
 {% endhighlight  %}
 
-  Uncomment `DOCEKR_OPTS` add `-g /data/mnt/docker` as shown above in `/etc/default/docker`
+Uncomment `DOCEKR_OPTS` add `-g /data/mnt/docker` as shown above in `/etc/default/docker`
 
-6. Start Docker daemon
+__Start Docker daemon__
  
 {% highlight bash %}
 $ systemctl start docker
@@ -220,14 +220,13 @@ __Example__
 {% highlight bash %}
 $ vim /etc/docker/daemon.js
 
-
 {
  "data-root": "/mnt/docker-data",
  "storage-driver": "overlay2"
 }
 {% endhighlight  %}
 
-*Check this documentation:* https://docs.docker.com/config/daemon/systemd/
+*Check this documentation:* <a href="https://docs.docker.com/config/daemon/systemd/">https://docs.docker.com/config/daemon/systemd/</a>
 
 I hope, this post can help others to find required information quickly and implement necessary steps to get to work. 
  
