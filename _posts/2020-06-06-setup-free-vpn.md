@@ -1,6 +1,6 @@
 ---
 title: "Free VPN [WireGuard] Setup 🇬🇧"
-lay out: post
+layout: post
 date: 2020-06-06 10:00
 image: /assets/images/wireguard.svg
 headerImage: true
