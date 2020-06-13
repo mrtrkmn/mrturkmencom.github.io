@@ -421,14 +421,14 @@ func main() {
 
 __Example__
 
-| Task 1       | Task 2                   |
-|--------------|--------------------------|
-| x=1          |                          |
-| x=x+1        |                          |
-| GLOBAL EVENT | if GLOBAL EVENT  print x |
+| Task 1       |            Task 2                    |
+|--------------|--------------------------------------|
+| x=1          |                                      |
+| x=x+1        |                                      |
+| GB           |           if GB  print x             | 
 
 
-- GLOBAL EVENT is viewed by all tasks at the same time 
+- GLOBAL EVENT (GB) is viewed by all tasks at the same time 
 - Print must occur after update of x 
 - Synchronization is used to restrict bad interleavings  
 
