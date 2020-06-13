@@ -97,7 +97,7 @@ Keep in mind that the notes are taken from several resources mainly from the cou
     - Must wash before you can dry 
 - __Some tasks are parallelizable and some are not__
   
-  ## Von Neumann Bottleneck 
+## Von Neumann Bottleneck 
 
   ### Speedup without Parallelism
 
