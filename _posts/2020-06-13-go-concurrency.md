@@ -72,7 +72,7 @@ description: Go Programming Language Notes.
 
 # Concurrency in Go 
 
-Concurrency is in Go, makes Go programming language very unique and attractive compared to other languages, in this section I am going to share the notes which I took when I was watching coursera video series. 
+Concurrency in Go, makes Go programming language very unique and attractive compared to other languages, in this section I am going to share the notes which I took when I was watching coursera video series. 
 
 If you did not already check previous post on Go, it could be helpful to check it out first. 
 - [Go Notes (OOP)](/go-notes/) 
