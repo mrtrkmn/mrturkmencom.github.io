@@ -99,7 +99,7 @@ Keep in mind that the notes are taken from several resources mainly from the cou
   
 ## Von Neumann Bottleneck 
 
-  ### Speedup without Parallelism
+### Speedup without Parallelism
 
   
 - Can we achieve speedup without Parallelism ?
