@@ -4,13 +4,13 @@
             <svg class="icon icon-facebook"><use xlink:href="#icon-facebook"></use></svg>
         </a>
     {% endif %}
-
+    
     {% if site.twitter %}
         <a class="link" data-title="twitter.com/{{ site.twitter }}" href="https://twitter.com/{{ site.twitter }}" target="_blank">
             <svg class="icon icon-twitter"><use xlink:href="#icon-twitter"></use></svg>
         </a>
     {% endif %}
-
+    
     {% if site.google %}
         <a class="link" data-title="plus.google.com/+{{ site.google }}" href="https://plus.google.com/+{{ site.google }}" target="_blank">
             <svg class="icon icon-google"><use xlink:href="#icon-google"></use></svg>
@@ -101,9 +101,18 @@
         </a>
     {% endif %}
 
+
+    <a class="link" data-title="dev.to/mrturkmen.com" href="https://dev.to/mrturkmen" target="_blank">
+        <svg class="icon icon-dev"><use xlink:href="#icon-dev"></use></svg>
+    </a>
+
+
     {% if site.email %}
         <a class="link" data-title="{{ site.email }}" href="mailto:{{ site.email }}">
             <svg class="icon icon-mail"><use xlink:href="#icon-mail"></use></svg>
         </a>
     {% endif %}
+
+  
+
 </div>
