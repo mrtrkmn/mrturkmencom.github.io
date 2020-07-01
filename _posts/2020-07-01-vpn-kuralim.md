@@ -50,68 +50,67 @@ Bu gönderide WireGuard VPN uygulaması kullanılacaktır. WireGuard VPN uygulam
 
 ## Sunucu Ayarları
 
-1.  VPN uygulamasını kiraladığımız sunucu üzerine kuralım. 
+**VPN uygulamasını kiraladığımız sunucu üzerine kuralım.**
 
-  ```bash 
-  $ sudo apt-get update && sudo apt-get upgrade -y 
-  $ sudo add-apt-repository ppa:wireguard/wireguard
-  $ sudo apt-get update 
-  $ sudo apt-get install wireguard
-  ```
+```bash 
+$ sudo apt-get update && sudo apt-get upgrade -y 
+$ sudo add-apt-repository ppa:wireguard/wireguard
+$ sudo apt-get update 
+$ sudo apt-get install wireguard
+```
 
 
-2.  Uygulamayı çekirdek güncellemeleri ile birlikte güncellemek için gerekli komutu girelim. 
+**Uygulamayı çekirdek güncellemeleri ile birlikte güncellemek için gerekli komutu girelim.** 
 
   ```bash 
   $ sudo modprobe wireguard
   ```
 
-3. Aşağıda verilen komut girildiğinde beklenen sonuç.
+**Aşağıda verilen komut girildiğinde beklenen sonuç.**
 
-  ```bash 
-  $ lsmod | grep wireguard
+```bash 
+$ lsmod | grep wireguard
 
-  wireguard             217088  0
-  ip6_udp_tunnel         16384  1 wireguard
-  udp_tunnel             16384  1 wireguard
-  ```
+wireguard             217088  0
+ip6_udp_tunnel         16384  1 wireguard
+udp_tunnel             16384  1 wireguard
+```
 
-4.  Anahtarları üretelim
+**Anahtarları üretelim**
 
-  ```bash 
-    $ cd /etc/wireguard
-    $ umask 077
-    $ wg genkey | sudo tee privatekey | wg pubkey | sudo tee publickey
-  ```
+```bash 
+$ cd /etc/wireguard
+$ umask 077
+$ wg genkey | sudo tee privatekey | wg pubkey | sudo tee publickey
+```
 
-5.  VPN Konfigurasyon dosyasını `/etc/wireguard/wg0.conf` ayarlayalım. 
+**VPN Konfigurasyon dosyasını `/etc/wireguard/wg0.conf` ayarlayalım.**
 
 ```conf 
 
-  [Interface]
-  PrivateKey = <daha-öncesinde-üretilen-gizli-anahtar>
-  Address = 10.120.120.2/24
-  Address = fd86:ea04:1111::1/64
-  SaveConfig = true
-  PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
-  PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o ens3 -j MASQUERADE
-  ListenPort = 51820
-
+[Interface]
+PrivateKey = <daha-öncesinde-üretilen-gizli-anahtar>
+Address = 10.120.120.2/24
+Address = fd86:ea04:1111::1/64
+SaveConfig = true
+PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o ens3 -j MASQUERADE; ip6tables -A FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -A POSTROUTING -o ens3 -j MASQUERADE
+PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o ens3 -j MASQUERADE; ip6tables -D FORWARD -i wg0 -j ACCEPT; ip6tables -t nat -D POSTROUTING -o ens3 -j MASQUERADE
+ListenPort = 51820
 ```
 Burada önemli nokta `ens3`, ip tables komutu içerisinde yer alan `en3`, sunucudan sunucuya farklılık gösterebilir, bundan dolayı sizin sunucunuzda ne ise ağ kartının ismi onu girmelisiniz. `ifconfig ` komutu sayesinde öğrenilebilir. 
 
 Bir diğer önemli nokta ise daha öncesinde 4. adımda üretilen `privatekey`, içeriğinin `PrivateKey` alanına girilmesidir. 
 
-6. Ağ trafiğini yönlendirme
+**Ağ trafiğini yönlendirme**
 
 `/etc/sysctl.conf` dosyası içerisine aşağıda verilen bilgileri girerek kaydediniz. 
 
-  ```conf
-  net.ipv4.ip_forward=1
-  net.ipv6.conf.all.forwarding=1
-  ```
+```conf
+net.ipv4.ip_forward=1
+net.ipv6.conf.all.forwarding=1
+```
 
-7. Bilgiler gerekli dosyaya kaydedildikten sonra aşağıdaki komutlar sırası ile girilmelidir. 
+**Bilgiler gerekli dosyaya kaydedildikten sonra aşağıdaki komutlar sırası ile girilmelidir.**
 
 
 ```bash 
@@ -119,7 +118,7 @@ $ sysctl -p
 $ wg-quick up wg0
 ```
 
-8. Komutların girilmesi ve herhangi bir sorun görülmemesi durumda ve `wg` komutu terminale girildikten sonra aşağıda verilen çıktıya benzer bir çıktı göreceksiniz. 
+**Komutların girilmesi ve herhangi bir sorun görülmemesi durumda ve `wg` komutu terminale girildikten sonra aşağıda verilen çıktıya benzer bir çıktı göreceksiniz.**
 
 ```bash 
 $ wg
@@ -191,14 +190,14 @@ Bazen sunucu tarafında yapmanız gereken bazı güvenlik duvarı ayarları bulu
 $ ufw enable
 ```
 
-VPN uygulamasına bağlanmamızı sağlayacak portu açıyoruz. 
+**VPN uygulamasına bağlanmamızı sağlayacak portu açıyoruz.**
 
 ```bash 
 
 $ ufw allow 51820/udp
 ```
 
-IP tabloları ile 51820  portu için bazı ayarlamalar yapıyoruz. 
+**IP tabloları ile 51820  portu için bazı ayarlamalar yapıyoruz.**
 
 ```bash 
 $ iptables -A INPUT -p udp -m udp --dport 51820 -j ACCEPT
