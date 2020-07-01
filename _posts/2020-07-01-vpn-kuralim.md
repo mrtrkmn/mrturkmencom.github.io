@@ -209,7 +209,6 @@ Burada önemli olan kısımlardan biriside bütün komutlar ROOT, yani yönetici
 
 Bu noktadan sonra, bilgisayarınıza, tabletinize veya telefonunuza kurduğunuz WireGuard uygulaması sayesinde sorunsuz ve güvenlikli bir şekilde internetinizi kullanabilirsiniz. 
 
-Haydi hayırlı uğurlu olsun .... 
 
 
 
