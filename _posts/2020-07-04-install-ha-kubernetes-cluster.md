@@ -20,7 +20,7 @@ description: Installation of Highly Available Kubernetes Cluster
 
 
 
-The main purpose of this blog post a simple walkthrough of setting up Kubernetes cluster with external [HAProxy](http://www.haproxy.org/) which will be the endpoint where out `kubectl` client communicates over. 
+The main purpose of this blog post a simple walkthrough of setting up Kubernetes cluster with external [HAProxy](http://www.haproxy.org/) which will be the endpoint where our `kubectl` client communicates over. 
 Node specifications for this setup is given as shown in the table below. Keep in mind that all of them has access to each other with password and without password. The environment which Kubernetes cluster will stay is running on OpenStack. It means that once a configuration (ssh keys, hosts, and etc) is done for example master 1 then all other nodes could be initialized through snapshot of master 1. To be able to setup such a Kubernetes cluster easily, I will be using [KubeSpray](https://github.com/kubernetes-sigs/kubespray)  which is a repository where it has all required configuration and playbooks for setting up necessary cluster. 
 
 - [Node Specification](#node-specification)
