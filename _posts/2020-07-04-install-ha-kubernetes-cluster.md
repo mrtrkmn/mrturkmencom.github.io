@@ -1,7 +1,7 @@
 ---
 title: "Setup Highly Available Kubernetes Cluster with HAProxy 🇬🇧 " 
 layout: post
-date: 2020-07-04 17:43
+date: 2020-07-05 17:43
 image: /assets/images/kubernetes/kubernetes-logo.png
 headerImage: true
 tag:
