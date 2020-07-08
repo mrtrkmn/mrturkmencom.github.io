@@ -16,7 +16,12 @@ resume: false
 resume-external: false
 resume-url: https://google.com/?q=my+resume
 
-url: https://mrturkmencom.github.io
+# kubernetes: true
+# kubernetes-external: true
+# kubernetes-url: /kubernetes
+
+
+url: https://mrturkmen.com
 
 
 
