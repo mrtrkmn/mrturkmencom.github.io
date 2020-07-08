@@ -5,7 +5,7 @@ date: 2019-05-01 00:00
 tag: computer-vision 
 image:
 headerImage: false
-projects: true
+projects: false
 hidden: true 
 description: "Implementation of different techniques of computer vision algorithms"
 category: project
