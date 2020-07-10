@@ -13,6 +13,8 @@ tag:
 - master
 - node
 - worker
+- nginx
+- ingress
 category: blog
 author: mrturkmen
 description: Installation of Highly Available Kubernetes Cluster
