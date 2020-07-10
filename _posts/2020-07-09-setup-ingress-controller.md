@@ -17,7 +17,7 @@ tag:
 - ingress
 category: blog
 author: mrturkmen
-description: Installation of Highly Available Kubernetes Cluster
+description: NGINX Ingress Controller Setup
 ---
 
 
