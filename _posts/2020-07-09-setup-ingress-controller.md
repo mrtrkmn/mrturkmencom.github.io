@@ -1,7 +1,7 @@
 ---
 title: "NGINX Ingress Controller with HAProxy for k8s cluster 🇬🇧 " 
 layout: post
-date: 2020-07-9 00:00 
+date: 2020-07-10 16:35 
 image: /assets/images/kubernetes/nginx_logo.png
 headerImage: true
 tag:
