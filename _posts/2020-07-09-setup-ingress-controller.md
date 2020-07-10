@@ -1,8 +1,8 @@
 ---
-title: "Setup Ingress Controller for k8s cluster 🇬🇧 " 
+title: "NGINX Ingress Controller for k8s cluster 🇬🇧 " 
 layout: post
 date: 2020-07-9 00:00 
-image: /assets/images/kubernetes/kubernetes-logo.png
+image: /assets/images/kubernetes/nginx_logo.png
 headerImage: true
 tag:
 - kubernetes
@@ -21,7 +21,7 @@ description: Installation of Highly Available Kubernetes Cluster
 
 
 
-In recent post, which is [Setup Highly Available Kubernetes Cluster with HAProxy 🇬🇧](https://mrturkmen.com/install-ha-kubernetes-cluster/), a highly available Kubernetes cluster is created. However, once I started to dig in and deploy some stuff to cluster, I realized that I am not able to connect any deployed application or services. For instance, when an web application is deployed using HAProxy load balancer (endpoint), and check from `kubectl` (on client side), its status is running. However, that application could not be reached from outside world although I re-patch an external ip address by following command 
+In recent post, which is [Setup Highly Available Kubernetes Cluster with HAProxy 🇬🇧](https://mrturkmen.com/install-ha-kubernetes-cluster/), a highly available Kubernetes cluster is created. However, once I started to dig in and deploy some stuff to cluster, I realized that I am not able to connect any deployed application or services. For instance, when an web application is deployed using HAProxy load balancer (endpoint), and check from `kubectl` (on client side), its status is running. However, that application could not be reached from outside world although I re-patch an external IP address by following command 
 
 ```bash 
  $ kubectl patch svc <application-name> -n <name-of-namespace> -p '{"spec": {"type": "LoadBalancer", "externalIPs":["<haproxy-ip-address>"]}}' 
@@ -44,11 +44,11 @@ The best and simple explanation to this question is coming from Kubernetes offic
 
 > Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is controlled by rules defined on the Ingress resource.
 
-> An [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontends to help handle the traffic. 
+> An [Ingress controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) is responsible for fulfilling the Ingress, usually with a load balancer, though it may also configure your edge router or additional frontend to help handle the traffic. 
 
 Whenever you have services which are running inside a cluster and would like to access them, you need to setup ingress controller for that cluster. The missing part was having no ingress controller on worker nodes in my k8s cluster. Everything was working however there was no access to them from outside world, that's why ingress controller should take place in cluster architecture. 
 
-In this post, I will go for [NGINX ingress controller](https://kubernetes.github.io/ingress-nginx/) with its default setup, however there are plenty of different [ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers) which you may go for. I might change NGINX to Traefik in future but it depends on requirements yet for now I will go with nginx ingress controller. The reason is that, it is super easy to setup, super rich with different features, included Kubernetes official documentation and fullfill what I am expecting for now. 
+In this post, I will go for [NGINX ingress controller](https://kubernetes.github.io/ingress-nginx/) with its default setup, however there are plenty of different [ingress controllers](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers/#additional-controllers) which you may go for. I might change NGINX to Traefik in future but it depends on requirements yet for now, I will go with nginx ingress controller. The reason is that, it is super easy to setup, super rich with different features, included Kubernetes official documentation and fulfill what I am expecting for now. 
 
 # Updates to cluster 
 
@@ -59,7 +59,7 @@ Let's briefly what I have explained in previous post;
 - Use KubeSpray to deploy cluster 
 - Create HAProxy and establish SSH connection with all nodes. 
 
-I have noticed that when deploying cluster, some addons should be enabled in order to use ingress controller from cluster with external HAProxy load balancer. Now, since cluster deployment was established with Ansible playbooks, it is not needed to setup eveything from scratch. All modified configuration can be re-deployed without effecting any resource which is exists on cluster setup. It means that, I can enable required parts in configuration file and re-deploy cluster as I did on previous post. 
+I have noticed that when deploying cluster, some add-ons should be enabled in order to use ingress controller from cluster with external HAProxy load balancer. Now, since cluster deployment was established with Ansible playbooks, it is not needed to setup everything from scratch. All modified configuration can be re-deployed without effecting any resource which is exists on cluster setup. It means that, I can enable required parts in configuration file and re-deploy cluster as I did on previous post. 
 
 
 -  **Enable ingress controller from [inventory](https://github.com/kubernetes-sigs/kubespray/blob/master/inventory/sample/group_vars/k8s-cluster/addons.yml) file inside KubeSpray**
@@ -72,7 +72,7 @@ I have noticed that when deploying cluster, some addons should be enabled in ord
 
     Once this configuration part is updated from existing KubeSpray configuration files, k8s cluster should be redeployed with same command in [previous post](https://mrturkmen.com/install-ha-kubernetes-cluster/)
 
-    *Assumption* : previous cconfigured KubeSpray settings are used. 
+    *Assumption* : previous configured KubeSpray settings are used. 
 
     ```bash 
     $ ansible-playbook -i inventory/mycluster/hosts.yaml  --become --become-user=root cluster.yml
@@ -111,7 +111,7 @@ It is super simple to deploy and setting up NGINX ingress controller since it is
 
 *Image is taken from ([https://www.nginx.com/products/nginx/kubernetes-ingress-controller/#resources](https://www.nginx.com/products/nginx/kubernetes-ingress-controller/#resources))*
 
-In normal cases, the situation is as given figure above, however since in existing k8s cluster, I am using HAProxy for communicating with clients, I need NGINX ingress controller inside worker nodes which will manage running applications/services by communicating with HAProxy and eventually, the services will be accessible from outside world. 
+In normal cases, the situation is as given figure above, however, since in existing k8s cluster, I am using HAProxy for communicating with clients, I need NGINX ingress controller inside worker nodes which will manage running applications/services by communicating with HAProxy and eventually, the services will be accessible from outside world. 
 
 If I summarize how overview diagram will look like in my case is like in given figure below. 
 
@@ -122,7 +122,7 @@ If I summarize how overview diagram will look like in my case is like in given f
 
 It can be observed that, in given k8s cluster overview, HAProxy is in front, it communicates with clients, afterwards transmitting request based on defined rule on HAProxy configuration. Each worker node has NGINX ingress controller, what exactly it means, whenever a request appear to cluster, worker nodes will agree between each other and response back to user without having any problem. Since NGINX ingress controller is capable of load balancing inside worker nodes as well.
 
-There is also Ingress Resource Rules part inside cluster, what it does is that all routing rules based on path forwarded given service, an example on this is given below. 
+There is also Ingress Resource Rules part inside cluster, what it does, is that all routing rules based on path forwarded given service, an example on this is given below. 
 
 ### Steps to create NGINX Ingress controller
 
@@ -193,7 +193,7 @@ daemonset.apps/nginx-ingress   6         6         6       6            6       
 
 ## Deploy Example Application
 
-To test how an application will be exposed to externally from k8s cluster, an example applicaton could be deployed as given below. Note that the following example is simplest example for this context, hence, keep in mind that it might require more configuration and detalied approach then described here when you would like to deploy more complex applicatons. 
+To test how an application will be exposed to externally from k8s cluster, an example applicaton could be deployed as given below. Note that the following example is simplest example for this context, hence, keep in mind that it might require more configuration and detailed approach then described here when you would like to deploy more complex applications. 
 
 - **Create a sample NGINX Web Server** (Using provided example)
 
@@ -301,6 +301,6 @@ Now, the NGINX web server deployment is ready on given DNS record in yaml file a
 
 Note that, provided yaml files are just simple example of deploying NGINX web server without any certification, when certificates (HTTPS) enabled or any other type of deployment happened different configurations should be applied. 
 
-When everything goes without any problem, you will have a cluster which uses NGINX Ingress controller for internal cluster routing and HAProxy as communcation endpoint for clients. Keep in mind that whenever a new service or deployment take place, required configuration should be enabled in HAProxy configuration as it is enabled for port 80 applications above. Different services will have different requirements therefore it is important to catch main logic in a setup. It is all done for this post. 
+When everything goes without any problem, you will have a cluster which uses NGINX Ingress controller for internal cluster routing and HAProxy as communication endpoint for clients. Keep in mind that whenever a new service or deployment take place, required configuration should be enabled in HAProxy configuration as it is enabled for port 80 applications above. Different services will have different requirements therefore it is important to catch main logic in a setup. It is all done for this post. 
 
 Cheers ! 
