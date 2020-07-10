@@ -33,6 +33,7 @@ After some searching and reading, I realized that worker nodes require their own
 - [What is ingress controller ?](#what-is-ingress-controller-)
 - [Updates to cluster](#updates-to-cluster)
   - [Setup NGINX Ingress Controller](#setup-nginx-ingress-controller)
+    - [Steps to create NGINX Ingress controller](#steps-to-create-nginx-ingress-controller)
   - [Deploy Example Application](#deploy-example-application)
 
 
@@ -115,13 +116,17 @@ In normal cases, the situation is as given figure above, however since in existi
 If I summarize how overview diagram will look like in my case is like in given figure below. 
 
 
-// todo : place nice overview
+
+![INGRESS CONTOLLERS OVERVIEW](../assets/images/kubernetes/overview-ingress-controller.png)
 
 
+It can be observed that, in given k8s cluster overview, HAProxy is in front, it communicates with clients, afterwards transmitting request based on defined rule on HAProxy configuration. Each worker node has NGINX ingress controller, what exactly it means, whenever a request appear to cluster, worker nodes will agree between each other and response back to user without having any problem. Since NGINX ingress controller is capable of load balancing inside worker nodes as well.
 
-It can be observed that, in given k8s cluster overview, HAProxy is in front, it communicates with clients, afterwards transmitting request based on defined rule on HAProxy configuration. Each worker node has NGINX ingress controller, what exatcly it means, whenever a request appear to cluster, worker nodes will agree between each other and response back to user without having any problem. Since NGINX ingress controller is capable of load balancing inside worker nodes as well.
+There is also Ingress Resource Rules part inside cluster, what it does is that all routing rules based on path forwarded given service, an example on this is given below. 
 
-Steps to create NGINX Ingress controller (as shown given link above)
+### Steps to create NGINX Ingress controller
+
+*All steps shown below for installation of NGINX Ingress Controller taken from [https://docs.nginx.com/nginx-ingress-controller/installation/](https://docs.nginx.com/nginx-ingress-controller/installation/)*
 
 **Make sure that you are a client with administrator privilege, all steps related to NGINX ingress controller  should be done through `kubectl` (on client computer/server)** 
 
@@ -192,9 +197,9 @@ To test how an application will be exposed to externally from k8s cluster, an ex
 
 - **Create a sample NGINX Web Server** (Using provided example)
 
-```bash 
-
-$cat nginx-deploy-main.yml
+*nginx-deploy-main.yml*
+  
+```yaml 
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
 kind: Deployment
 metadata:
@@ -203,7 +208,7 @@ spec:
   selector:
     matchLabels:
       app: nginx
-  replicas: 1 # tells deployment to run 2 pods matching the template
+  replicas: 2 # tells deployment to run 2 pods matching the template
   template:
     metadata:
       labels:
@@ -216,3 +221,86 @@ spec:
         - containerPort: 80
 ```
 
+*Taken from [https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/](https://kubernetes.io/docs/tasks/run-application/run-stateless-application-deployment/)*
+
+In given yaml deployment file above, two replicas of NGINX:1.14.2 will be deployed to cluster and it has name of `nginx-deployment`. The yaml explains itself very well. 
+
+It can be deployed either through directly from official link or from your local depends on your preferences. 
+
+```bash 
+$ kubectl apply -f https://k8s.io/examples/application/deployment.yaml
+
+## or you can do same thing with local file as given below
+$ kubectl apply -f nginx-deploy-main.yml
+```
+Expose deployment: 
+
+```bash 
+$ kubectl expose deploy nginx-deployment --port 80
+```
+
+Once it is deployed to cluster and exposed, there is one step left for this simple counter example is that, exposing the service and creating ingress rule (resource) in yaml file, by specifiying kind as `Ingress`. 
+ 
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-ingress
+spec:
+  rules:
+  - host: <dns-record> (a domain like test.mydomain.com)
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-deployment
+          servicePort: 80
+```
+
+The crucial part is `serviceName` and `servicePort` which are defining specifications of the services within cluster. The yaml specifications can be expanded as shown below, assume that you have wildcard record in your domain name server and have multiple services which are running in same port in a cluster, yaml file can be re-defined as given below. 
+
+*nginx-ingress-resource.yml*
+
+```yaml
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-controller
+spec:
+  rules:
+  - host: <dns-record> (a domain like test.mydomain.com)
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-deployment
+          servicePort: 80
+      - path: /apache
+        backend: 
+           serviceName: apache-deployment
+           servicePort: 80
+      - path: /native-web-server 
+        backend:
+           serviceName: native-web-server-deployment
+           servicePort: 80
+``` 
+
+Keep in mind that all given services should be deployed before hand otherwise when a request made to any path which is not deployed, it may return either 404 or 500. There are plenty of different options to define and update the components in a k8s cluster. Therefore, all yaml files should be changed according to requirements.
+
+*Create ingress controller rules from provided yaml file*
+
+```bash 
+$ kubectl create -f nginx-ingress-resource.yml
+```
+
+Now, the NGINX web server deployment is ready on given DNS record in yaml file and according to request paths different services can be called which are also running inside kubernetes cluster. 
+
+
+![NGINX WEB SERVER DEPLOYMENT RESULT](../assets/images/kubernetes/nginx-web-server.png)
+
+
+Note that, provided yaml files are just simple example of deploying NGINX web server without any certification, when certificates (HTTPS) enabled or any other type of deployment happened different configurations should be applied. 
+
+When everything goes without any problem, you will have a cluster which uses NGINX Ingress controller for internal cluster routing and HAProxy as communcation endpoint for clients. Keep in mind that whenever a new service or deployment take place, required configuration should be enabled in HAProxy configuration as it is enabled for port 80 applications above. Different services will have different requirements therefore it is important to catch main logic in a setup. It is all done for this post. 
+
+Cheers ! 
