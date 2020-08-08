@@ -1,4 +1,4 @@
----
+<!-- ---
 title: "Github Repos"
 layout: post
 date: 2019-07-01 00:00
@@ -22,4 +22,4 @@ author: mrturkmen
 # externalLink: https://github.com/aau-network-security/haaukins
 ---
 
-[![Top Langs](https://github-readme-stats-orpin-nine.vercel.app/api/top-langs/?username=anuraghazra&hide=javascript,html)](https://github.com/anuraghazra/github-readme-stats)
+[![Top Langs](https://github-readme-stats-orpin-nine.vercel.app/api/top-langs/?username=anuraghazra&hide=javascript,html)](https://github.com/anuraghazra/github-readme-stats) -->
