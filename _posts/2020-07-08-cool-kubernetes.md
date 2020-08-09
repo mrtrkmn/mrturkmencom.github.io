@@ -6,7 +6,7 @@ tag: kubernetes, contarization, docker
 image:
 headerImage: false
 projects: false
-hidden: false 
+hidden: true 
 description: "Kubernetes resources hub"
 category: project
 author: mrturkmen
