@@ -1,7 +1,7 @@
 ---
 title: "cool-kubernetes 🇬🇧 "
 layout: post
-date: 2020-08-17 16:37s
+date: 2020-08-19 16:37s
 tag: kubernetes, contarization, docker 
 image:
 headerImage: false
