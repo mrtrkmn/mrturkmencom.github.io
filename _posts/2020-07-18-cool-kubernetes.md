@@ -2,7 +2,7 @@
 title: "cool-kubernetes 🇬🇧 "
 layout: post
 date: 2020-08-19 16:37s
-tag: kubernetes, contarization, docker 
+tag: kubernetes, containerization, documentation, resources, hub, open-source, github
 image:
 headerImage: false
 projects: true
