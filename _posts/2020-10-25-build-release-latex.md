@@ -1,7 +1,7 @@
 ---
 title: "Latex with Github Actions🇬🇧" 
 layout: post
-date: 2020-10-25 16:40
+date: 2020-10-25 16:25
 image: 
 headerImage: false
 tag:
