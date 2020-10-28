@@ -1,7 +1,7 @@
 ---
-title: "Latex with Github Actions🇬🇧" 
+title: "Latex with Github Actions 🇬🇧" 
 layout: post
-date: 2020-10-25 16:25
+date: 2020-10-26 16:25
 image: 
 headerImage: false
 tag:
@@ -116,3 +116,4 @@ Here is example repository to check completed version.
 
 
 ![Release](../assets/images/latex-release.png)
+
