@@ -199,7 +199,7 @@ Since we are using Github actions, we have some limitations regarding to usage o
 
 The limitations regarding to file sizes in releases, according to Github Statement here:[Distributing large binaries](https://docs.github.com/en/free-pro-team@latest/github/managing-large-files/distributing-large-binaries) 
 
-Basically, a file size which will be uploaded to releases should **NOT** exceeds 2 GB. However, keep in mind that it is per file, there is NO limitation for overall size of release :). It means that repository will be updated to split files into chunks if size of the file exceeds 2 GB. So, in case of 15 GB of playlist, it will be uploaded in 2GB chunks to releases.
+Basically, a file size which will be uploaded to releases should **NOT** exceeds 2 GB. However, keep in mind that it is per file, there is **NO** limitation for overall size of the release :). It means that repository will be updated to split files into chunks if size of the file exceeds 2 GB. So, in case of 15 GB of playlist, it should be uploaded in 2GB chunks to releases. (- a feature which is NOT exists on **youtubeto** yet -)
 
 There are some more limitations:
 
