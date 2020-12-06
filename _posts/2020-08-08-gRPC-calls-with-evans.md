@@ -39,9 +39,9 @@ For simplicity and purpose of this post, I have created a basic microservice whi
 
 ## Sample repository
 
-A sample microservice is created for demonstration purposes and all codes are available here : [https://github.com/mrturkmencom/BookShelf](https://github.com/mrturkmencom/BookShelf)
+A sample microservice is created for demonstration purposes and all codes are available here : [https://github.com/mrturkmenhub/BookShelf](https://github.com/mrturkmenhub/BookShelf)
 
-If you have already a running gRPC server, you can direcly pass to [demonstration of evans](#demonstration-of-evans), if not, you can clone [https://github.com/mrturkmencom/BookShelf](https://github.com/mrturkmencom/BookShelf) repository and test **evans** out.  
+If you have already a running gRPC server, you can direcly pass to [demonstration of evans](#demonstration-of-evans), if not, you can clone [https://github.com/mrturkmenhub/BookShelf](https://github.com/mrturkmenhub/BookShelf) repository and test **evans** out.  
 
 ## Defining calls 
 
