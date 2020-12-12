@@ -134,7 +134,7 @@ Some configuration regarding to Ansible, such as private key, inventory file loc
 
 This post is not about how to write ansible playbooks, hence, I am going to skip to explain it. If you would like to check and understand it you can check following repositories for examples; 
 
- - [DevOps Learning Journey][https://github.com/mrturkmenhub/DevOps-Learning-Journey] 
+ - [DevOps Learning Journey](https://github.com/mrturkmenhub/DevOps-Learning-Journey)
  - [Handwritten notes about Ansible](https://mrturkmen.com/assets/notes/20201205-introduction-to-ansible.pdf)
 
 [Decrypt script](https://github.com/mrturkmenhub/ansible-deploy/blob/master/.github/scripts/decrypt.sh) is most important file which is decrypting encrypted private key to access the server. 
