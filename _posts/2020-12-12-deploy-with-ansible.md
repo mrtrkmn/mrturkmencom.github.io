@@ -17,7 +17,7 @@ description: Deploying with Ansible on CI/CD.
 
 
 
-In this post, deployment process of an application with Ansible will be explained. Traditionally applications can be deployed in different ways, most similar approach to deploy applications similar to Ansible is executing bash script which has ssh commands. To give an example, Travis continuous integration has a feature where a bash script can be defined to deploy application and through given instructions within bash script, application can be successfully deployed.
+In this post, deployment process of an application with Ansible will be explained. Traditionally applications can be deployed in different ways, quite similar approach to deploy applications like in Ansible is executing bash script which has ssh commands. To give an example, Travis continuous integration has a feature where a bash script can be defined to deploy application and through given instructions within bash script, application can be successfully deployed.
 
 Details regarding to deployment using Travis bash scripting can be found [here](https://docs.travis-ci.com/user/deployment/script/)
 
