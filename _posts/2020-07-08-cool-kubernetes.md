@@ -10,6 +10,7 @@ hidden: true
 description: "Kubernetes resources hub"
 category: project
 author: mrturkmen
+draft: true
 # externalLink: https://github.com/mrturkmencom/kubernetes
 ---
  
