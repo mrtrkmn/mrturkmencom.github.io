@@ -6,7 +6,7 @@ tag: kubernetes, containerization, documentation, resources, hub, open-source, g
 image:
 headerImage: false
 projects: true
-hidden: false    
+hidden: true    
 description: "Kubernetes resources hub"
 category: project
 author: mrturkmen
