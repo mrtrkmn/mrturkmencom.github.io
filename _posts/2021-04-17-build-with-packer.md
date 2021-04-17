@@ -287,6 +287,10 @@ This file can be run from the place where [ubuntu-20.04.json](https://github.com
 $ packer build ubuntu-20.04.json
 ```
 
+![](../assets/images/packer/packer_build_on_local.png)
+
+
+
 It will start to build custom image by installing tools which are defined under scripts and configure username and password according to preseed.cfg and setup.sh files.
 
 
@@ -383,6 +387,10 @@ Once variables are set, it can be run in same way with the local one.
 $ packer build aws_packer.json
 
 ```
+
+![](../assets/images/packer/packer_build_on_aws.png)
+
+
 
 Complete packer JSON file : [aws_packer.json](https://github.com/mrtrkmnhub/ubuntu-packer/blob/master/on-aws/aws-packer.json)
 
